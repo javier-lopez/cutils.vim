@@ -40,8 +40,8 @@ Usage
 
  - [CULongLines](http://got-ravings.blogspot.com/2009/07/vim-pr0n-combating-long-lines.html) (show long lines)
 
-    :CULongLines [#_characters]
-    let g:cutils_map_longlines = '&lt;Leader&gt;cul'
+        :CULongLines [#_characters]
+        let g:cutils_map_longlines = '&lt;Leader&gt;cul'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-longlines.gif"/><br>
@@ -49,20 +49,20 @@ Usage
 
  - CUVCSInfo (add branch information, support: git,svn)
 
-    :echo CUVCSInfo()
-    [master]
-    :set statusline+=%{CUVCSInfo()}
+        :echo CUVCSInfo()
+        [master]
+        :set statusline+=%{CUVCSInfo()}
 
  - CUFileSize (add file size in Kb or MB)
 
-    :echo CUFileSize()
-    2kb
-    set statusline+=%-7{CUFileSize()}
+        :echo CUFileSize()
+        2kb
+        set statusline+=%-7{CUFileSize()}
 
  - CUWhiteSpaceHunter (show whitespaces characters)
 
-    :CUWhiteSpaceHunter
-    let g:cutils_map_whitespacehunter = '&lt;Leader&gt;cuw'
+        :CUWhiteSpaceHunter
+        let g:cutils_map_whitespacehunter = '&lt;Leader&gt;cuw'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-whitespacehunter.gif"/><br>
@@ -70,8 +70,8 @@ Usage
 
  - CUAppendModeLine (append mode vim line at the end of current file)
 
-    :CUAppendModeLine
-    let g:cutils_map_appendmodeline  = '&lt;Leader&gt;cua'
+        :CUAppendModeLine
+        let g:cutils_map_appendmodeline  = '&lt;Leader&gt;cua'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-appendmodeline.gif"/><br>
@@ -79,12 +79,12 @@ Usage
 
  - CUSetProperties (apply preferences by lang)
 
-    let g:cutils_setproperties_dir  = './assets/lang'
+        let g:cutils_setproperties_dir  = './assets/lang'
 
 <!--TODO 11-03-2014 02:24 >> look for replace-->
  - CUSkel (template system for empty files)
 
-    let g:cutils_skel_dir  = './assets/skeletons'
+        let g:cutils_skel_dir  = './assets/skeletons'
 
 License
 -------
