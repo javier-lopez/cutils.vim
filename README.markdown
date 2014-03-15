@@ -41,7 +41,7 @@ Usage
  - [CULongLines](http://got-ravings.blogspot.com/2009/07/vim-pr0n-combating-long-lines.html) (show long lines)
 
         :CULongLines [#_characters]
-        let g:cutils_map_longlines = '&lt;Leader&gt;cul'
+        let g:cutils_map_longlines = '<Leader>cul'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-longlines.gif"/><br>
@@ -62,7 +62,7 @@ Usage
  - CUWhiteSpaceHunter (show whitespaces characters)
 
         :CUWhiteSpaceHunter
-        let g:cutils_map_whitespacehunter = '&lt;Leader&gt;cuw'
+        let g:cutils_map_whitespacehunter = '<Leader>cuw'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-whitespacehunter.gif"/><br>
@@ -71,7 +71,7 @@ Usage
  - CUAppendModeLine (append mode vim line at the end of current file)
 
         :CUAppendModeLine
-        let g:cutils_map_appendmodeline  = '&lt;Leader&gt;cua'
+        let g:cutils_map_appendmodeline  = '<Leader>cua'
 
 <p align="center">
   <img src="http://javier.io/assets/img/cutils-appendmodeline.gif"/><br>
