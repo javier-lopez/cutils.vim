@@ -1,0 +1,93 @@
+*x-modes*                 Global plugin for using Vim on differente situations
+
+==============================================================================
+CONTENTS                                                        *XmodesContents*
+
+    1. Intro ........................... |XmodesIntro|
+    2. Usage ........................... |XmodesUsage|
+    3. Configuration ................... |XmodesConfig|
+    4. License ......................... |XmodesLicense|
+    5. Bugs ............................ |XmodesBugs|
+    6. Contributing .................... |XmodesContributing|
+    7. Changelog ....................... |XmodesChangelog|
+    8. Credits ......................... |XmodesCredits|
+
+==============================================================================
+INTRO                                                              *XmodesIntro*
+
+X-modes is a global plugin who set preferences according to they way I use
+[vim](http://vim.org). It sets highly opinionated settings. Probably not
+something you would like to use.
+
+==============================================================================
+USAGE                                                              *XmodesUsage*
+
+Press any of the following shortcuts:
+
+    <Leader>D (default mode)
+    <Leader>d (development mode)
+    <Leader>w (wrte mode)
+    <Leader>p (presentation mode)
+
+Every mode can be toggled.
+
+==============================================================================
+CONFIGURATION                                                     *XmodesConfig*
+
+These options should be set in your .vimrc file.
+
+g:x_modes_map_default                                   *XmodesConfigMapDefault*
+    Use this option to configure the mapping assigned to default mode. >
+        let g:x_modes_map_default = '<Leader>D'
+<
+
+g:x_modes_map_development                           *XmodesConfigMapDevelopment*
+    Use this option to configure the mapping assigned to development mode. >
+        let g:x_modes_map_development = '<Leader>d'
+<
+
+g:x_modes_map_write                                       *XmodesConfigMapWrite*
+    Use this option to configure the mapping assigned to write mode. >
+        let g:x_modes_map_write = '<Leader>w'
+<
+
+g:x_modes_map_presentation                         *XmodesConfigMapPresentation*
+    Use this option to configure the mapping assigned to presenttation mode. >
+        let g:x_modes_map_presentation = '<Leader>p'
+<
+==============================================================================
+LICENSE                                                          *XmodesLicense*
+
+WTFPL, Do What the Fuck You Want to Public License. - http://www.wtfpl.net/
+
+==============================================================================
+BUGS                                                                *XmodesBugs*
+
+If you find a bug please post it on the issue tracker:
+
+    https://github.com/chilicuil/x-modes/issues
+
+==============================================================================
+CONTRIBUTING                                                *XmodesContributing*
+
+I created this plugin in an effort for cleaning up my chaotic vimrc > 1200 LOC!
+It does everything I need, if you use it and require something else, the best
+way to get it is to send a patch, fork it and send your pull request =)
+
+GitHub: http://github.com/chilicuil/x-modes/
+
+==============================================================================
+CHANGELOG                                                      *XmodesChangelog*
+
+v0.0.1
+    * Initial release.
+
+==============================================================================
+CREDITS                                                          *XmodesCredits*
+
+Enhancements has been made by the following people:
+
+    * You,   https://github.com/you
+
+==============================================================================
+" vim: ft=help
