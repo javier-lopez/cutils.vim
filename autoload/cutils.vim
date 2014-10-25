@@ -74,7 +74,7 @@ endfunction
 " Taken from http://vim.wikia.com/wiki/Modeline_magic
 function! cutils#AppendModeLine()
   let save_cursor = getpos('.')
-  let append = ' vim: set ts='.&tabstop.' sw='.&shiftwidth.' tw='.&textwidth.' ft='.&filetype.' : '
+  let append = ' vim: set ts='.&tabstop.' sw='.&shiftwidth.' tw='.&textwidth.' ft='.&filetype.' :'
   $put =substitute(&commentstring, '%s', append, '')
   call setpos('.', save_cursor)
   redraw!
