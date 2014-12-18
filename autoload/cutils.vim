@@ -1,6 +1,6 @@
 " ============================================================================
 " File:        cutils.vim
-" Description: misc functions useful when using vim
+" Description: misc vim functions useful for me
 " Maintainer:  Javier Lopez <m@javier.io>
 " License:     WTFPL -- look it up.
 " ============================================================================
@@ -79,4 +79,28 @@ function! cutils#AppendModeLine()
   call setpos('.', save_cursor)
   redraw!
   echo "Added modeline :)"
+endfunction
+
+" Functions who cannot be autoload
+function! cutils#CUSkel(_language)
+    let l:skeleton_file = expand(g:cutils_skel_dir . "/skeleton." . a:_language)
+    if filereadable(l:skeleton_file)
+        execute "silent! 0read " . l:skeleton_file
+        " Delete last line:
+        normal! G
+        normal! dd
+        normal! gg
+        call search("++HERE++")
+        normal! xxxxxxxx
+        " (crude, but it works)
+        " To automatically switch to insert mode, uncomment the following line:
+        " startinsert
+    endif
+endfunction
+
+function! cutils#CUSetProperties(_language)
+    let l:properties_file = expand(g:cutils_setproperties_dir . "/properties." . a:_language)
+    if filereadable(l:properties_file)
+        execute "silent! source " . l:properties_file
+    endif
 endfunction
