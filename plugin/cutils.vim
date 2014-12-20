@@ -18,7 +18,6 @@ endif
 
 " Default configuration {{{1
 if !exists('g:cutils_map_longlines') | let g:cutils_map_longlines = '<Leader>cul' | endif
-if !exists('g:cutils_map_whitespacehunter') | let g:cutils_map_whitespacehunter = '<Leader>cuw' | endif
 if !exists('g:cutils_map_appendmodeline') | let g:cutils_map_appendmodeline = '<Leader>cua' | endif
 if !exists('g:cutils_setproperties_dir') | let g:cutils_setproperties_dir = expand('<sfile>:h') . '/assets/lang' | endif
 if !exists('g:cutils_skel_dir') | let g:cutils_skel_dir = expand('<sfile>:h') . '/assets/skeletons' | endif
@@ -51,11 +50,9 @@ autocmd BufNewFile *.c                           call cutils#CUSkel("c")
 command! -nargs=? CULongLines call cutils#LongLines('<args>')
 command! CUVCSInfo            call cutils#VCSInfo()
 command! CUFileSize           call cutils#FileSize()
-command! CUWhiteSpaceHunter   call cutils#WhiteSpaceHunter()
 command! CUAppendModeLine     call cutils#AppendModeLine()
 command! CUSetProperties      call cutils#SetProperties()
 command! CUSkel               call cutils#Skel()
 
 exe "nnoremap <silent>" g:cutils_map_longlines             ":CULongLines<CR>"
-exe "nnoremap <silent>" g:cutils_map_whitespacehunter      ":CUWhiteSpaceHunter<CR>"
 exe "nnoremap <silent>" g:cutils_map_appendmodeline        ":CUAppendModeLine<CR>"

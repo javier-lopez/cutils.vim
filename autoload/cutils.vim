@@ -51,24 +51,6 @@ function! cutils#FileSize()
     endif
 endfunction
 
-function! cutils#WhiteSpaceHunter()
-    if exists ("s:whitespacehunter")
-        set nolist
-        echo "[SpaceHunter off]"
-        unlet s:whitespacehunter
-    else
-        if has("gui_running")
-            set list listchars=tab:▷⋅,trail:·,extends:…,nbsp:‗
-        else
-            " xterm + terminus hates these
-            set list listchars=tab:▷⋅,trail:·,extends:>,nbsp:_
-        endif
-        set fillchars=fold:-
-        echo "[SpaceHunter on]"
-        let s:whitespacehunter = 1
-    endif
-endfunction
-
 " Append modeline after last line in buffer.
 " Use substitute() (not printf()) to handle '%%s' modeline in LaTeX files.
 " Taken from http://vim.wikia.com/wiki/Modeline_magic
@@ -81,7 +63,6 @@ function! cutils#AppendModeLine()
   echo "Added modeline :)"
 endfunction
 
-" Functions who cannot be autoload
 function! cutils#CUSkel(_language)
     let l:skeleton_file = expand(g:cutils_skel_dir . "/skeleton." . a:_language)
     if filereadable(l:skeleton_file)

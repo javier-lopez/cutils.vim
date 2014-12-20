@@ -1,4 +1,6 @@
-[cutils](https://github.com/chilicuil/cutils) is a repository of small functions I've found useful when using [vim](http://vim.org). This plugin was created to clean my vimrc file (which at the time was getting huge > 1200 LOC!). Feel free to use, suggest new functions or improve current ones. NOTE: Not all functions are mine. you'll find the url/author from where I fetch the original versions at the documentation.
+[cutils](https://github.com/chilicuil/cutils) is a repository of small functions I've found useful when using [vim](http://vim.org). This plugin was created to clean my vimrc file (which at the time was getting huge > 1200 LOC!). Feel free to use it, suggest new functions or improve current ones.
+
+NOTE: Not all functions are mine. you'll find the url/author from where I fetch the original versions at the documentation.
 
 <p align="center">
   <img src="http://javier.io/assets/img/vim-cutils.jpg"/><br>
@@ -38,7 +40,7 @@ Usage
 
 [cutils](https://github.com/chilicuil/cutils) define at least the following functions:
 
- - [CULongLines](http://got-ravings.blogspot.com/2009/07/vim-pr0n-combating-long-lines.html) (show long lines)
+ - CULongLines (show long lines)
 
         :CULongLines [#_characters]
         let g:cutils_map_longlines = '<Leader>cul'
@@ -47,7 +49,7 @@ Usage
   <img src="http://javier.io/assets/img/culonglines.gif"/><br>
 </p>
 
- - CUVCSInfo (add branch information, support: git,svn)
+ - CUVCSInfo (show branch information, support: git, svn)
 
         :echo CUVCSInfo()
         [master]
@@ -57,7 +59,7 @@ Usage
   <img src="http://javier.io/assets/img/cuvcsinfo.png"/><br>
 </p>
 
- - CUFileSize (add file size in Kb or MB)
+ - CUFileSize (show current file size in Kb or MB)
 
         :echo CUFileSize()
         2kb
@@ -67,16 +69,7 @@ Usage
   <img src="http://javier.io/assets/img/cufilesize.png"/><br>
 </p>
 
- - CUWhiteSpaceHunter (show whitespaces characters)
-
-        :CUWhiteSpaceHunter
-        let g:cutils_map_whitespacehunter = '<Leader>cuw'
-
-<p align="center">
-  <img src="http://javier.io/assets/img/cuwhitespacehunter.gif"/><br>
-</p>
-
- - CUAppendModeLine (append mode vim line at the end of current file)
+ - CUAppendModeLine (append modeline at the end of current file)
 
         :CUAppendModeLine
         let g:cutils_map_appendmodeline  = '<Leader>cua'
@@ -89,7 +82,7 @@ Usage
 
         let g:cutils_setproperties_dir  = './assets/lang'
 
-<!--TODO 11-03-2014 02:24 >> look for replace-->
+<!--TODO 11-03-2014 02:24 >> look for replacement-->
  - CUSkel (template system for empty files)
 
         let g:cutils_skel_dir  = './assets/skeletons'

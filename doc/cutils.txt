@@ -1,89 +1,105 @@
-*x-modes*                 Global plugin for using Vim on differente situations
+*vim-cutils*       Repository of small functions useful in differente situations
 
 ==============================================================================
-CONTENTS                                                        *XmodesContents*
+CONTENTS                                                        *CutilsContents*
 
-    1. Intro ........................... |XmodesIntro|
-    2. Usage ........................... |XmodesUsage|
-    3. Configuration ................... |XmodesConfig|
-    4. License ......................... |XmodesLicense|
-    5. Bugs ............................ |XmodesBugs|
-    6. Contributing .................... |XmodesContributing|
-    7. Changelog ....................... |XmodesChangelog|
-    8. Credits ......................... |XmodesCredits|
-
-==============================================================================
-INTRO                                                              *XmodesIntro*
-
-X-modes is a global plugin who set preferences according to they way I use
-[vim](http://vim.org). It sets highly opinionated settings. Probably not
-something you would like to use.
+    1. Intro ........................... |CutilsIntro|
+    2. Usage ........................... |CutilsUsage|
+       2.1 CULongLines ................. |CULongLines|
+       2.2 CUCVSInfo ................... |CUVCSInfo|
+       2.3 CUFileSize .................. |CUFileSize|
+       2.4 CUAppendModeLine ............ |CUAppendModeLine|
+       2.5 CUSetProperties ............. |CUSetProperties|
+       2.6 CUSkel ...................... |CUSkel|
+    3. License ......................... |CutilsLicense|
+    4. Bugs ............................ |CutilsBugs|
+    5. Contributing .................... |CutilsContributing|
+    6. Changelog ....................... |CutilsChangelog|
+    7. Credits ......................... |CutilsCredits|
 
 ==============================================================================
-USAGE                                                              *XmodesUsage*
+INTRO                                                              *CutilsIntro*
 
-Press any of the following shortcuts:
+Cutils is a repository of small functions I've found useful when using vim.
+This plugin was created to clean my vimrc file (which at the time was getting
+huge > 1200 LOC!). Feel free to use, suggest new functions or improve current
+ones.
 
-    <Leader>D (default mode)
-    <Leader>d (development mode)
-    <Leader>w (wrte mode)
-    <Leader>p (presentation mode)
-
-Every mode can be toggled.
+NOTE: Not all functions are mine. you'll find the url/author from where
+I fetch the original versions at the documentation.
 
 ==============================================================================
-CONFIGURATION                                                     *XmodesConfig*
+USAGE                                                              *CutilsUsage*
 
-These options should be set in your .vimrc file.
+Cutils define at least the following functions:
 
-g:x_modes_map_default                                   *XmodesConfigMapDefault*
-    Use this option to configure the mapping assigned to default mode. >
-        let g:x_modes_map_default = '<Leader>D'
+CULongLines (show long lines)                                      *CULongLines*
+>
+    :CULongLines [#_characters]
+    let g:cutils_map_longlines = '<Leader>cul'
 <
 
-g:x_modes_map_development                           *XmodesConfigMapDevelopment*
-    Use this option to configure the mapping assigned to development mode. >
-        let g:x_modes_map_development = '<Leader>d'
+CUVCSInfo (show branch information, support: git, svn)               *CUVCSInfo*
+>
+    :echo CUVCSInfo()
+    [master]
+    :set statusline+=%{CUVCSInfo()}
 <
 
-g:x_modes_map_write                                       *XmodesConfigMapWrite*
-    Use this option to configure the mapping assigned to write mode. >
-        let g:x_modes_map_write = '<Leader>w'
+CUFileSize (show current file size in Kb or MB)                     *CUFileSize*
+>
+    :echo CUFileSize()
+    2kb
+    set statusline+=%-7{CUFileSize()}
 <
 
-g:x_modes_map_presentation                         *XmodesConfigMapPresentation*
-    Use this option to configure the mapping assigned to presenttation mode. >
-        let g:x_modes_map_presentation = '<Leader>p'
+CUAppendModeLine (append modeline at the end of current file) *CUAppendModeLine*
+>
+    :CUAppendModeLine
+    let g:cutils_map_appendmodeline  = '<leader>cua'
 <
+
+CUSetProperties (apply preferences by lang)                    *CUSetProperties*
+>
+    let g:cutils_setproperties_dir  = './assets/lang'
+<
+
+CUSkel (create templates on empty files by lang)                        *CUSkel*
+>
+    let g:cutils_skel_dir  = './assets/skeletons'
+<
+
 ==============================================================================
-LICENSE                                                          *XmodesLicense*
+LICENSE                                                          *CutilsLicense*
 
 WTFPL, Do What the Fuck You Want to Public License. - http://www.wtfpl.net/
 
 ==============================================================================
-BUGS                                                                *XmodesBugs*
+BUGS                                                                *CutilsBugs*
 
 If you find a bug please post it on the issue tracker:
 
-    https://github.com/chilicuil/x-modes/issues
+    https://github.com/chilicuil/vim-cutils/issues
 
 ==============================================================================
-CONTRIBUTING                                                *XmodesContributing*
+CONTRIBUTING                                                *CutilsContributing*
 
 I created this plugin in an effort for cleaning up my chaotic vimrc > 1200 LOC!
 It does everything I need, if you use it and require something else, the best
 way to get it is to send a patch, fork it and send your pull request =)
 
-GitHub: http://github.com/chilicuil/x-modes/
+GitHub: http://github.com/chilicuil/vim-cutils/
 
 ==============================================================================
-CHANGELOG                                                      *XmodesChangelog*
+CHANGELOG                                                      *CutilsChangelog*
 
+v0.0.2
+    * Remove CUWhiteSpaceHunter, use vim-better-whitespace instead
 v0.0.1
     * Initial release.
 
 ==============================================================================
-CREDITS                                                          *XmodesCredits*
+CREDITS                                                          *CutilsCredits*
 
 Enhancements has been made by the following people:
 
