@@ -45,6 +45,7 @@ autocmd BufNewFile *.pl,*.perl                   call cutils#CUSkel("perl")
 autocmd BufNewFile *.php,*.php3,*.php4,*.php5    call cutils#CUSkel("php")
 autocmd BufNewFile *schema,*.inc,*.engine,*.ctp  call cutils#CUSkel("php")
 autocmd BufNewFile *.c                           call cutils#CUSkel("c")
+autocmd BufNewFile *.css                         call cutils#CUSkel("css")
 
 " Commands & Mappings {{{1
 command! -nargs=? CULongLines call cutils#LongLines('<args>')
