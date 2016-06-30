@@ -11,11 +11,10 @@ CONTENTS                                                        *CutilsContents*
        2.4 CUAppendModeLine ............ |CUAppendModeLine|
        2.5 CUSetProperties ............. |CUSetProperties|
        2.6 CUSkel ...................... |CUSkel|
-    3. License ......................... |CutilsLicense|
-    4. Bugs ............................ |CutilsBugs|
-    5. Contributing .................... |CutilsContributing|
-    6. Changelog ....................... |CutilsChangelog|
-    7. Credits ......................... |CutilsCredits|
+    3. Bugs ............................ |CutilsBugs|
+    4. Contributing .................... |CutilsContributing|
+    5. Changelog ....................... |CutilsChangelog|
+    6. Credits ......................... |CutilsCredits|
 
 ==============================================================================
 INTRO                                                              *CutilsIntro*
@@ -68,11 +67,6 @@ CUSkel (create templates on empty files by lang)                        *CUSkel*
 >
     let g:cutils_skel_dir  = './assets/skeletons'
 <
-
-==============================================================================
-LICENSE                                                          *CutilsLicense*
-
-WTFPL, Do What the Fuck You Want to Public License. - http://www.wtfpl.net/
 
 ==============================================================================
 BUGS                                                                *CutilsBugs*
