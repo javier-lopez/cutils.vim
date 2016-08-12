@@ -90,8 +90,3 @@ Usage
 <p align="center">
   <img src="http://javier.io/assets/img/cuskel.gif"/><br>
 </p>
-
-License
--------
-
-© 2014 WTFPL, Do What the Fuck You Want to Public License. - http://www.wtfpl.net/
