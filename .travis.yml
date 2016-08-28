@@ -1,2 +1,2 @@
 before_install: sudo apt-get update && sudo apt-get install -y git-core vim-nox
-script: cd tests && vim -Nu tests.vimrc -c'+Vader! *.vader'
+script: cd tests && git checkout -qf master && vim -Nu tests.vimrc -c'+Vader! *.vader'
