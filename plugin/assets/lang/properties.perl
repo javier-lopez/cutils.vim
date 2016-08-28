@@ -2,9 +2,6 @@ set syntax       =perl
 set makeprg      =$VIMRUNTIME/tools/efm_perl.pl\ -c\ %\ $*
 set errorformat  =%f:%l:%m
 
-nnoremap <silent><Leader>> :%!perltidy -q<CR>
-vnoremap <silent><Leader>> :!perltidy -q<CR>
-
 let perl_extended_vars           = 1
 let perl_include_pod             = 1
 let perl_fold                    = 1
@@ -13,6 +10,7 @@ let perl_want_scope_in_variables = 1
 
 "r'un
 map <Leader>mr :!perl ./%<CR>
+map <Leader>ma :w<CR>:!perl ./%<CR>
 "run with arguments
 map <Leader>mra :!perl ./%<SPACE>
 

@@ -1,8 +1,7 @@
 " ============================================================================
 " File:        cutils.vim
-" Description: misc vim functions useful for me
+" Description: misc vim functions
 " Maintainer:  Javier Lopez <m@javier.io>
-" License:     WTFPL -- look it up.
 " ============================================================================
 
 " Init {{{1

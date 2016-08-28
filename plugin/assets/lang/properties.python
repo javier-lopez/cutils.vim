@@ -1,4 +1,3 @@
-set filetype=python
 set syntax=python
 set foldmethod=indent
 setlocal noexpandtab

@@ -1,8 +1,7 @@
 " ============================================================================
 " File:        cutils.vim
-" Description: misc vim functions useful for me
+" Description: misc vim functions
 " Maintainer:  Javier Lopez <m@javier.io>
-" License:     WTFPL -- look it up.
 " ============================================================================
 
 "got-ravings.blogspot.mx/2009/07/vim-pr0n-combating-long-lines.html
@@ -19,13 +18,13 @@ function! cutils#VCSInfo()
     let g:vcs_cache = {}
     let l:path = getcwd()
     if ! has_key(g:vcs_cache, l:path)
-        if (isdirectory(l:path . "/.git"))
+        if (isdirectory(finddir('.git', l:path . ";")))
             let g:vcs_cache[l:path] = "["
-                        \. substitute(readfile(l:path
-                        \. "/.git/HEAD", "", 1)[0],
+                        \. substitute(readfile(finddir('.git', l:path . ";")
+                        \. "/HEAD", "", 1)[0],
                         \ "^.*/", "", "") . "]"
-        elseif (isdirectory(l:path . "/.svn"))
-            let l:vcs_status = readfile(l:path . "/.svn/entries", "", 5)
+        elseif (isdirectory(finddir('.svn', l:path . ";")))
+            let l:vcs_status = readfile(finddir('.svn', l:path . ";") . "/entries", "", 5)
             let g:vcs_cache[l:path] = "["
                         \. substitute(l:vcs_status[4], "^.*/", "", "")
                         \. ":r" . l:vcs_status[3]
