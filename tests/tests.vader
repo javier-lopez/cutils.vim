@@ -1,0 +1,277 @@
+Execute(Load cutils):
+  Assert exists("g:loaded_cutils")
+
+Given(Input):
+  Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+Execute(CULongLines):
+  CULongLines 10
+  Assert join(getmatches()) =~ ".*Todo.*pattern.*10v.*"
+# TODO 28-08-2016 01:38 >> verify color
+
+Execute(CUVCSInfo):
+  Log cutils#VCSInfo()
+  AssertEqual cutils#VCSInfo(),"[master]"
+
+Execute(CUFileSize):
+  :edit ../package.sh
+  Log cutils#FileSize()
+  AssertEqual cutils#FileSize(),"76b"
+
+Given c (C file):
+  int i = 0;
+
+Execute(CUAppendModeLine):
+  AssertEqual 'c', &filetype
+  Log getline('$')
+  AssertEqual 1, line('$')
+  redir => messages
+    CUAppendModeLine
+  redir END
+  let lastmsg = get(split(messages, "\n"), -1, "")
+  Log lastmsg
+  AssertEqual 'Added modeline :)', lastmsg
+  Log getline('$')
+  AssertEqual 2, line('$')
+  Assert getline('$') =~ ".*ft=c.*"
+
+Execute(CUSetProperties):
+  :edit 1.c
+  Log &syntax
+  AssertEqual 'c', &syntax
+  Log &makeprg
+  AssertEqual "LANGUAGE=en CFLAGS='-g -Wall' make %:r", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  AssertEqual ':!./% ', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:make && ./%:r<CR>', mapcheck("<Leader>ma")
+
+  :edit 1.sh
+  Log &syntax
+  AssertEqual 'sh', &syntax
+  Log &makeprg
+  AssertEqual "chmod +x %", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  AssertEqual ':!./% ', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:!./%<CR>', mapcheck("<Leader>ma")
+
+  :edit 1.c
+  Log &syntax
+  AssertEqual 'c', &syntax
+  Log &makeprg
+  AssertEqual "LANGUAGE=en CFLAGS='-g -Wall' make %:r", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  AssertEqual ':!./% ', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:make && ./%:r<CR>', mapcheck("<Leader>ma")
+
+  :edit 1.html
+  Log &syntax
+  AssertEqual 'html', &syntax
+  Log &softtabstop
+  AssertEqual '2', &softtabstop
+  Log &tabstop
+  AssertEqual '2', &tabstop
+  Log &shiftwidth
+  AssertEqual '2', &shiftwidth
+  AssertEqual "LANGUAGE=en CFLAGS='-g -Wall' make %:r", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  AssertEqual ':!./% ', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:make && ./%:r<CR>', mapcheck("<Leader>ma")
+
+  :edit 1.java
+  Log &syntax
+  AssertEqual 'java', &syntax
+  Log &makeprg
+  AssertEqual "javac %", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  "AssertEqual ':!java %:r<CR>', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:make && java %:r<CR>', mapcheck("<Leader>ma")
+  Log '<Leader>md => ' . mapcheck("<Leader>md")
+  AssertEqual ':w<CR>:make && jdb %:r ', mapcheck("<Leader>md")
+  Log '<Leader>mda => ' . mapcheck("<Leader>mda")
+  AssertEqual ':w<CR>:make && jdb %:r ', mapcheck("<Leader>mda")
+
+  :edit Makefile
+  Log &syntax
+  AssertEqual 'make', &syntax
+  Log &foldmethod
+  AssertEqual "indent", &foldmethod
+
+  :edit 1.md
+  Log &syntax
+  AssertEqual 'mkd', &syntax
+  :edit 1.mkd
+  Log &syntax
+  AssertEqual 'mkd', &syntax
+  :edit 1.markdown
+  Log &syntax
+  AssertEqual 'mkd', &syntax
+  :edit 1.todo
+  Log &syntax
+  AssertEqual 'mkd', &syntax
+  :edit 1.notes
+  Log &syntax
+  AssertEqual 'mkd', &syntax
+
+  :edit 1.pl
+  Log &syntax
+  AssertEqual 'perl', &syntax
+  Log &errorformat
+  AssertEqual '%f:%l:%m', &errorformat
+  Log &makeprg
+  AssertEqual "/usr/share/vim/vim73/tools/efm_perl.pl -c % $*", &makeprg
+  Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  AssertEqual ':!perl ./% ', mapcheck("<Leader>mr")
+  Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  AssertEqual ':w<CR>:!perl ./%<CR>', mapcheck("<Leader>ma")
+  Log '<Leader>mra => ' . mapcheck("<Leader>mra")
+  AssertEqual ':!perl ./% ', mapcheck("<Leader>mra")
+
+  :edit 1.php
+  Log &syntax
+  AssertEqual 'php', &syntax
+  Log &errorformat
+  AssertEqual '%m in %f on line %l', &errorformat
+  Log &makeprg
+  AssertEqual "php -l %", &makeprg
+  "Log '<Leader>mr => ' . mapcheck("<Leader>mr")
+  "AssertEqual ':!perl ./% ', mapcheck("<Leader>mr")
+  "Log '<Leader>ma => ' . mapcheck("<Leader>ma")
+  "AssertEqual ':w<CR>:!perl ./%<CR>', mapcheck("<Leader>ma")
+  "Log '<Leader>mra => ' . mapcheck("<Leader>mra")
+  "AssertEqual ':!perl ./% ', mapcheck("<Leader>mra")
+
+  :edit 1.py
+  Log &syntax
+  AssertEqual 'python', &syntax
+  Log &foldmethod
+  "AssertEqual "indent", &foldmethod
+
+Execute(CUskel.c):
+  :edit 1.c
+
+Expect (CUskel.c):
+  #include <stdio.h>
+  #include <stdlib.h>
+  
+  int main(int argc, char const* argv[]) {
+      
+      fflush(stdout);
+      if (ferror(stdout)) exit(EXIT_FAILURE);
+      return EXIT_SUCCESS;
+  }
+
+Execute(CUskel.css):
+  :edit 1.css
+  Log line('$')
+  AssertEqual 506, line('$')
+
+Execute(CUskel.html):
+  :edit 1.html
+
+Expect (CUskel.html):
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>title</title>
+      <meta name="description" content="description here">
+      <meta name="keywords" content="keywords,here">
+      <meta name="author" content="name">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,300,600" type="text/css">
+      <link rel="stylesheet" href="assets/css/default.css" type="text/css">
+      <link rel="icon" type="image/png" href="assets/img/favicon.png">
+      <script src="assets/js/default.js"></script>
+    </head>
+  
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="one-half column" style="margin-top: 25%">
+            <h4></h4>
+            <p>
+            This index.html page is a placeholder with the CSS, font and
+            favicon. It's just waiting for you to add some content! If you need
+            some help hit up the <a href="http://www.getskeleton.com">Skeleton
+              documentation</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+
+Execute(CUskel.pl):
+  :edit 1.pl
+
+Expect (CUskel.pl):
+  #!/usr/bin/perl
+  use strict;
+  use warnings;
+  
+  
+Execute(CUskel.php):
+  :edit 1.php
+
+Expect (CUskel.php):
+  <?php
+  
+  ?>
+
+Execute(CUskel.py):
+  :edit 1.py
+
+Expect (CUskel.py):
+  #!/usr/bin/env python
+  
+  
+
+Execute(CUskel.rb):
+  :edit 1.rb
+
+Expect (CUskel.rb):
+  #!/usr/bin/env ruby -w
+  
+  
+
+Execute(CUskel.sh):
+  :edit 1.sh
+
+Expect (CUskel.sh):
+  #!/bin/sh
+  
+  
+Execute(CUskel.tex):
+  :edit 1.tex
+
+Expect (CUskel.tex):
+  \documentclass[letter,10pt]{report}
+  
+  \usepackage[utf8]{inputenc}
+  \usepackage[spanish{babel}
+  \usepackage[T1]{fontenc}
+  \usepackage{marvosym}
+  
+  % Title Page
+  \title{}
+  
+  \begin{document}
+  
+  \maketitle
+  
+  \chapter{}
+  
+  \tableofcontents
+  \end{document}
+
+Execute(Close temporal buffer):
+  :q
+
+#############################
+# vim: set ts=4 sw=2 tw=0 ft=
+#############################
