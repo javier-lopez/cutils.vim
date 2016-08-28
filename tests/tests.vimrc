@@ -16,6 +16,7 @@ endif
 
 filetype off
 set rtp+=~/.vim/bundle/vader.vim
+set rtp+=./vader.dep
 set rtp+=..
 filetype plugin indent on
 syntax enable
