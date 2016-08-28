@@ -1,3 +1,8 @@
+About
+-----
+
+[![Build Status](https://travis-ci.org/chilicuil/vim-cutils.png?branch=master)](https://travis-ci.org/chilicuil/vim-cutils)
+
 [cutils](https://github.com/chilicuil/cutils) is a repository of small functions I've found useful when using [vim](http://vim.org). This plugin was created to clean my vimrc file (which at the time was getting huge > 1200 LOC!). Feel free to use it, suggest new functions or improve current ones.
 
 NOTE: Not all functions are mine. you'll find the url/author from where I fetch the original versions at the documentation.
