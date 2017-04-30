@@ -70,11 +70,11 @@ Execute(CUSetProperties):
   Log &syntax
   AssertEqual 'html', &syntax
   Log &softtabstop
-  AssertEqual '2', &softtabstop
+  AssertEqual 2, &softtabstop
   Log &tabstop
-  AssertEqual '2', &tabstop
+  AssertEqual 2, &tabstop
   Log &shiftwidth
-  AssertEqual '2', &shiftwidth
+  AssertEqual 2, &shiftwidth
   AssertEqual "LANGUAGE=en CFLAGS='-g -Wall' make %:r", &makeprg
   Log '<Leader>mr => ' . mapcheck("<Leader>mr")
   AssertEqual ':!./% ', mapcheck("<Leader>mr")
@@ -123,7 +123,11 @@ Execute(CUSetProperties):
   Log &errorformat
   AssertEqual '%f:%l:%m', &errorformat
   Log &makeprg
-  AssertEqual "/usr/share/vim/vim73/tools/efm_perl.pl -c % $*", &makeprg
+  let makepgr_list = split(&makeprg)
+  "basename
+  let makepgr_list[0] = fnamemodify(makepgr_list[0], ":t")
+  Log join(makepgr_list)
+  AssertEqual "efm_perl.pl -c % $*", join(makepgr_list)
   Log '<Leader>mr => ' . mapcheck("<Leader>mr")
   AssertEqual ':!perl ./% ', mapcheck("<Leader>mr")
   Log '<Leader>ma => ' . mapcheck("<Leader>ma")
