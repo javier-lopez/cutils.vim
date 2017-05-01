@@ -11,6 +11,7 @@ Execute(CULongLines):
 
 Execute(CUVCSInfo):
   Log cutils#VCSInfo()
+  let out = system("git checkout -qf master")
   AssertEqual cutils#VCSInfo(),"[master]"
 
 Execute(CUFileSize):
