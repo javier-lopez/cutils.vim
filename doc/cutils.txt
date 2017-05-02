@@ -9,8 +9,9 @@ CONTENTS                                                        *CutilsContents*
        2.2 CUCVSInfo ................... |CUVCSInfo|
        2.3 CUFileSize .................. |CUFileSize|
        2.4 CUAppendModeLine ............ |CUAppendModeLine|
-       2.5 CUSetProperties ............. |CUSetProperties|
-       2.6 CUSkel ...................... |CUSkel|
+       2.5 CUSkel ...................... |CUSkel|
+       2.6 CUSetProperties ............. |CUSetProperties|
+       2.7 CUVisualSearch .............. |CUVisualSearch|
     3. Bugs ............................ |CutilsBugs|
     4. Contributing .................... |CutilsContributing|
     5. Changelog ....................... |CutilsChangelog|
@@ -58,16 +59,19 @@ CUAppendModeLine (append modeline at the end of current file) *CUAppendModeLine*
     let g:cutils_map_appendmodeline  = '<leader>cua'
 <
 
+CUSkel (create templates on empty files by lang)                        *CUSkel*
+>
+    let g:cutils_skel_dir  = './assets/skeletons'
+<
 CUSetProperties (apply preferences by lang)                    *CUSetProperties*
 >
     let g:cutils_setproperties_dir  = './assets/lang'
 <
 
-CUSkel (create templates on empty files by lang)                        *CUSkel*
+CUVisualSearch (enable [*|#] in visual mode)                    *CUVisualSearch*
 >
-    let g:cutils_skel_dir  = './assets/skeletons'
+    let g:cutils_visualsearch  = 1
 <
-
 ==============================================================================
 BUGS                                                                *CutilsBugs*
 

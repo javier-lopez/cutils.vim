@@ -84,3 +84,11 @@ function! cutils#CUSetProperties(_language)
         execute "silent! source " . l:properties_file
     endif
 endfunction
+
+"taken from practical vim 1st edition, page: 227
+function! cutils#VisualSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endf

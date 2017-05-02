@@ -20,6 +20,7 @@ if !exists('g:cutils_map_longlines') | let g:cutils_map_longlines = '<Leader>cul
 if !exists('g:cutils_map_appendmodeline') | let g:cutils_map_appendmodeline = '<Leader>cua' | endif
 if !exists('g:cutils_setproperties_dir') | let g:cutils_setproperties_dir = expand('<sfile>:h') . '/assets/lang' | endif
 if !exists('g:cutils_skel_dir') | let g:cutils_skel_dir = expand('<sfile>:h') . '/assets/skeletons' | endif
+if !exists('g:cutils_visualsearch') | let g:cutils_visualsearch = 1 | endif
 
 autocmd BufNewFile,BufEnter *.php,*.php3,*.php4  call cutils#CUSetProperties("php")
 autocmd BufNewFile,BufEnter *.php5,*.inc,*schema call cutils#CUSetProperties("php")
@@ -53,6 +54,12 @@ command! CUFileSize           call cutils#FileSize()
 command! CUAppendModeLine     call cutils#AppendModeLine()
 command! CUSetProperties      call cutils#SetProperties()
 command! CUSkel               call cutils#Skel()
+command! CUVisualSearch       call cutils#VisualSearch()
 
 exe "nnoremap <silent>" g:cutils_map_longlines             ":CULongLines<CR>"
 exe "nnoremap <silent>" g:cutils_map_appendmodeline        ":CUAppendModeLine<CR>"
+
+if g:cutils_visualsearch
+    xnoremap * :<C-u>CUVisualSearch<CR>/<C-R>=@/<CR><CR>
+    xnoremap # :<C-u>CUVisualSearch<CR>?<C-R>=@/<CR><CR>
+endif

@@ -1,20 +1,20 @@
-Execute(Load cutils):
+Execute(Test cutils loading):
   Assert exists("g:loaded_cutils")
 
-Given(Input):
+Given(Long input):
   Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
-Execute(CULongLines):
+Execute(CULongLines and expect red highlight):
   CULongLines 10
   Assert join(getmatches()) =~ ".*Todo.*pattern.*10v.*"
 # TODO 28-08-2016 01:38 >> verify color
 
-Execute(CUVCSInfo):
+Execute(VCSInfo test on own git repository):
   Log cutils#VCSInfo()
-  let out = system("git checkout -qf master")
+  let out = system("git checkout -q master")
   AssertEqual cutils#VCSInfo(),"[master]"
 
-Execute(CUFileSize):
+Execute(CUFileSize test on own plugin file):
   :edit ../package.sh
   Log cutils#FileSize()
   AssertEqual cutils#FileSize(),"76b"
@@ -22,13 +22,18 @@ Execute(CUFileSize):
 Given c (C file):
   int i = 0;
 
-Execute(CUAppendModeLine):
+Execute(CUAppendModeLine and test written output):
+  "original file
   AssertEqual 'c', &filetype
   Log getline('$')
   AssertEqual 1, line('$')
+
+  "CUAppendModeLine invocation
   redir => messages
     CUAppendModeLine
   redir END
+
+  "modified file
   let lastmsg = get(split(messages, "\n"), -1, "")
   Log lastmsg
   AssertEqual 'Added modeline :)', lastmsg
@@ -36,7 +41,10 @@ Execute(CUAppendModeLine):
   AssertEqual 2, line('$')
   Assert getline('$') =~ ".*ft=c.*"
 
-Execute(CUSetProperties):
+Given (Empty buffer):
+  
+
+Execute(CUSetProperties tests on different file types):
   :edit 1.c
   Log &syntax
   AssertEqual 'c', &syntax
@@ -156,10 +164,10 @@ Execute(CUSetProperties):
   Log &foldmethod
   "AssertEqual "indent", &foldmethod
 
-Execute(CUskel.c):
+Execute(CUSkel on a new C file):
   :edit 1.c
 
-Expect (CUskel.c):
+Expect (CUSkel C template):
   #include <stdio.h>
   #include <stdlib.h>
   
@@ -170,15 +178,17 @@ Expect (CUskel.c):
       return EXIT_SUCCESS;
   }
 
-Execute(CUskel.css):
+Execute(CUSkel on a new css file):
   :edit 1.css
+
+  "the result is too long to add it an expect test
   Log line('$')
   AssertEqual 506, line('$')
 
-Execute(CUskel.html):
+Execute(CUSkel on a new html file):
   :edit 1.html
 
-Expect (CUskel.html):
+Expect (CUSkel html template):
   <!DOCTYPE html>
   <html>
     <head>
@@ -211,50 +221,50 @@ Expect (CUskel.html):
     </body>
   </html>
 
-Execute(CUskel.pl):
+Execute(CUSkel on a new perl file):
   :edit 1.pl
 
-Expect (CUskel.pl):
+Expect (CUSkel perl template):
   #!/usr/bin/perl
   use strict;
   use warnings;
   
   
-Execute(CUskel.php):
+Execute(CUSkel on a new php file):
   :edit 1.php
 
-Expect (CUskel.php):
+Expect (CUSkel php template):
   <?php
   
   ?>
 
-Execute(CUskel.py):
+Execute(CUSkel on a new python file):
   :edit 1.py
 
-Expect (CUskel.py):
+Expect (CUSkel python template):
   #!/usr/bin/env python
   
   
 
-Execute(CUskel.rb):
+Execute(CUSkel on a new ruby file):
   :edit 1.rb
 
-Expect (CUskel.rb):
+Expect (CUskel ruby template):
   #!/usr/bin/env ruby -w
   
   
 
-Execute(CUskel.sh):
+Execute(CUSkel on a new shell file):
   :edit 1.sh
 
-Expect (CUskel.sh):
+Expect (CUSkel shell template):
   #!/bin/sh
   
   
-Execute(CUskel.tex):
+Execute(CUskel on a new latex file):
   :edit 1.tex
 
-Expect (CUskel.tex):
+Expect (CUskel latex template):
   \documentclass[letter,10pt]{report}
   
   \usepackage[utf8]{inputenc}
@@ -274,8 +284,33 @@ Expect (CUskel.tex):
   \tableofcontents
   \end{document}
 
-Execute(Close temporal buffer):
-  :q
+Given(CUVisualSearch * Input):
+  search pattern 1
+  search pattern 2
+  search pattern 3
+
+Do(CUVisualSearch search * in visual mode and remove the selection):
+  vEEl*
+  :s///g\<Enter>
+
+Expect(CUVisualSearch * result):
+  search pattern 1
+  2
+  search pattern 3
+
+Given(CUVisualSearch # Input):
+  search pattern 1
+  search pattern 2
+  search pattern 3
+
+Do(CUVisualSearch search # in visual mode and remove the selection):
+  vEEl#
+  :s///g\<Enter>
+
+Expect(CUVisualSearch # result):
+  search pattern 1
+  search pattern 2
+  3
 
 #############################
 # vim: set ts=4 sw=2 tw=0 ft=

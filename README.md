@@ -83,10 +83,6 @@ Usage
   <img src="http://javier.io/assets/img/cuappendmodeline.gif"/><br>
 </p>
 
- - CUSetProperties (apply preferences by lang)
-
-        let g:cutils_setproperties_dir  = './assets/lang'
-
 <!--TODO 11-03-2014 02:24 >> look for replacement-->
  - CUSkel (template system for empty files)
 
@@ -95,3 +91,12 @@ Usage
 <p align="center">
   <img src="http://javier.io/assets/img/cuskel.gif"/><br>
 </p>
+
+ - CUSetProperties (apply preferences by lang)
+
+        let g:cutils_setproperties_dir  = './assets/lang'
+
+ - CUVisualSearch (enable [*|#] in visual mode)
+
+        let g:cutils_visualsearch  = 1 "enabled by default
+
