@@ -56,6 +56,9 @@ command! CUSetProperties      call cutils#SetProperties()
 command! CUSkel               call cutils#Skel()
 command! CUVisualSearch       call cutils#VisualSearch()
 
+"taken from practical vim, pag: 249
+command! -nargs=0 -bar Qargs execute 'args' cutils#QuickfixFilenames()
+
 exe "nnoremap <silent>" g:cutils_map_longlines             ":CULongLines<CR>"
 exe "nnoremap <silent>" g:cutils_map_appendmodeline        ":CUAppendModeLine<CR>"
 
