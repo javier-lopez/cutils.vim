@@ -1,9 +1,9 @@
 About
 -----
 
-[![Build Status](https://travis-ci.org/chilicuil/cutils.vim.png?branch=master)](https://travis-ci.org/chilicuil/cutils.vim)
+[![Build Status](https://travis-ci.org/javier-lopez/cutils.vim.png?branch=master)](https://travis-ci.org/javier-lopez/cutils.vim)
 
-[cutils](https://github.com/chilicuil/cutils.vim) is a repository of small functions I've found useful when using [vim](http://vim.org). This plugin was created to clean my vimrc file (which at the time was getting huge > 1200 LOC!). Feel free to use it, suggest new functions or improve current ones.
+[cutils](https://github.com/javier-lopez/cutils.vim) is a repository of small functions I've found useful when using [vim](http://vim.org). This plugin was created to clean my vimrc file (which at the time was getting huge > 1200 LOC!). Feel free to use it, suggest new functions or improve current ones.
 
 NOTE: Not all functions are mine. you'll find the url/author from where I fetch the original versions at the documentation.
 
@@ -21,7 +21,7 @@ Installation
 
 - [Vundle](https://github.com/gmarik/vundle) way (recommended), add the following to your $HOME/.vimrc file:
 
-        Bundle 'chilicuil/cutils.vim'
+        Bundle 'javier-lopez/cutils.vim'
 
     And run inside of vim:
 
@@ -29,7 +29,7 @@ Installation
 
 - [Pathogen](https://github.com/tpope/vim-pathogen) way:
 
-        $ git clone https://github.com/chilicuil/cutils.vim.git ~/.vim/bundle/cutils.vim
+        $ git clone https://github.com/javier-lopez/cutils.vim.git ~/.vim/bundle/cutils.vim
 
 - **Manual** (simplest if you've never heard of vundle or pathogen), download the zip file generated from github and extract it to $HOME/.vim
 
@@ -43,7 +43,7 @@ Installation
 Usage
 -----
 
-[cutils](https://github.com/chilicuil/cutils.vim) define at least the following functions:
+[cutils](https://github.com/javier-lopez/cutils.vim) define at least the following functions:
 
  - CULongLines (show long lines)
 
